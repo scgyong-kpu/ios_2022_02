@@ -15,23 +15,32 @@ struct TopButtonMod : ViewModifier {
     }
 }
 struct ContentView: View {
+    @State var page = 1
     var body: some View {
         VStack {
             HStack {
-                Image(systemName: "arrow.left.circle")
-                    .resizable()
-                    .modifier(TopButtonMod())
+                Button {
+                    page -= 1
+                } label: {
+                    Image(systemName: "arrow.left.circle")
+                        .resizable()
+                        .modifier(TopButtonMod())
+                }
                 Spacer()
-                Text("3/5")
+                Text("\(page)/5")
 //                    .frame(maxWidth:.infinity)
                     .font(.largeTitle)
                 Spacer()
-                Image(systemName: "arrow.right.circle")
-                    .resizable()
-                    .modifier(TopButtonMod())
+                Button {
+                    page += 1
+                } label: {
+                    Image(systemName: "arrow.right.circle")
+                        .resizable()
+                        .modifier(TopButtonMod())
+                }
 
             }
-            Image("cat1")
+            Image("cat\(page)")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxHeight: .infinity)
