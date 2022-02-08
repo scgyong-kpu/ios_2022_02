@@ -101,23 +101,35 @@ nums.sort()
 // snake_case
 // ALL_CAPS_UNDERSCORE
 
+
 class Animal {
     var legCount = 0
+    var name = ""
+//    var name: String
+//    init(name: String) {
+//        self.name = name
+//    }
     func desc() -> String {
-        return "Animal with \(legCount) legs"
+        return "Animal:\(name) with \(legCount) legs"
     }
 }
 
 let a1 = Animal()
-let d1 = a1.desc()
-let l1 = a1.legCount
+//////////
+a1.desc()
+a1.name = "Lark"
+a1.desc()
 
-let m1 = Animal()
-m1.legCount = 10
-let desc = m1.desc()
-let d2 = a1.desc()
-m1.legCount
-a1.legCount
+
+//let d1 = a1.desc()
+//let l1 = a1.legCount
+//
+//let m1 = Animal()
+//m1.legCount = 10
+//let desc = m1.desc()
+//let d2 = a1.desc()
+//m1.legCount
+//a1.legCount
 
 
 
