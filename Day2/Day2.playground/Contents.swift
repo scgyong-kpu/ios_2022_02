@@ -104,32 +104,27 @@ nums.sort()
 
 class Animal {
     var legCount = 0
-    var name = ""
-//    var name: String
-//    init(name: String) {
-//        self.name = name
-//    }
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
     func desc() -> String {
         return "Animal:\(name) with \(legCount) legs"
     }
 }
 
-let a1 = Animal()
-//////////
-a1.desc()
-a1.name = "Lark"
+let a1 = Animal(name: "Lark")
 a1.desc()
 
+class Mammal: Animal {
+    override init(name: String) {
+        super.init(name: name)
+        self.legCount = 4
+    }
+//    func baby() ->
+}
 
-//let d1 = a1.desc()
-//let l1 = a1.legCount
-//
-//let m1 = Animal()
-//m1.legCount = 10
-//let desc = m1.desc()
-//let d2 = a1.desc()
-//m1.legCount
-//a1.legCount
-
+let m1 = Mammal(name: "Elephant")
+m1.desc()
 
 
