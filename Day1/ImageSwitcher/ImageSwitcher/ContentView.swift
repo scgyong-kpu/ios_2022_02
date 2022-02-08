@@ -16,6 +16,7 @@ struct TopButtonMod : ViewModifier {
 }
 struct ContentView: View {
     @State var page = 1
+    let total = 6
     var body: some View {
         VStack {
             HStack {
@@ -25,9 +26,9 @@ struct ContentView: View {
                     Image(systemName: "arrow.left.circle")
                         .resizable()
                         .modifier(TopButtonMod())
-                }
+                }.disabled(page <= 1)
                 Spacer()
-                Text("\(page)/5")
+                Text("\(page)/\(total)")
 //                    .frame(maxWidth:.infinity)
                     .font(.largeTitle)
                 Spacer()
@@ -37,7 +38,7 @@ struct ContentView: View {
                     Image(systemName: "arrow.right.circle")
                         .resizable()
                         .modifier(TopButtonMod())
-                }
+                }.disabled(page >= total)
 
             }
             Image("cat\(page)")
