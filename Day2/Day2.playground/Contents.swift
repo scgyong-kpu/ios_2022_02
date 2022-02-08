@@ -121,10 +121,92 @@ class Mammal: Animal {
         super.init(name: name)
         self.legCount = 4
     }
-//    func baby() ->
+    func giveBirth() -> Mammal {
+        return baby()
+    }
+    func baby() -> Mammal {
+        return Mammal(name: "Baby \(name)")
+    }
 }
 
 let m1 = Mammal(name: "Elephant")
 m1.desc()
+let b = m1.giveBirth()
+b.desc()
+m1 is Mammal
+// is-a relationship
+m1 is Animal
+let gc = b.giveBirth()
+gc.name
 
+class Dog: Mammal {
+    func bark() -> String { "Bark!" }
+    override func baby() -> Mammal {
+        return Dog(name: "\(name)'s puppy")
+    }
+}
 
+let jd = Dog(name: "Jindol")
+let msg = jd.bark()
+m1 is Dog
+let puppy = jd.giveBirth()
+puppy.name
+if puppy is Dog {
+    (puppy as! Dog).bark()
+}
+//puppy.bark()
+//pupp
+let ddd = (m1 as? Dog)
+let msg2 = ddd?.bark()
+//    .bark()
+
+class Platypus: Mammal {
+    override func giveBirth() -> Mammal {
+        print("Laying an egg")
+        return Platypus(name: "Platypus from an \(name)'s egg")
+    }
+}
+
+//let pl = Platypus(name: "Pipi")
+//let pl2 = pl.giveBirth()
+//pl2.name
+
+let animals = [
+    Dog(name: "Jd"),
+    Mammal(name: "Elephant"),
+    Platypus(name: "Pipi")
+]
+
+for a in animals {
+//    if a is Dog {
+//    } else if a is Platypus {
+//    } else {
+//    }
+    let child = a.giveBirth()
+    print(a.name, child.name)
+}
+
+class Monster: Mammal {
+    // stored property vs computed porperty
+    var kneeCount: Int { legCount }
+    var toeCount: Int {
+        get {
+            return legCount * 4
+        }
+        set(count) {
+            legCount = count / 4
+        }
+    }
+    var eyeCount = 0 {
+        didSet {
+            legCount = 2 * eyeCount
+        }
+    }
+//    func getKneeCount()->Int { legCount }
+}
+let m = Monster(name: "Mon")
+//m.toeCount = 64
+m.eyeCount = 128
+m.legCount
+m.kneeCount
+m.toeCount
