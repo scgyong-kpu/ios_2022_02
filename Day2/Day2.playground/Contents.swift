@@ -80,3 +80,44 @@ nums.sort()
 
 //let gt:((Double,Double)->Bool) = >
 
+
+// Upper case, Lower case
+// case-sensitive vs case insensitive
+
+//int a = 10;
+//int A = 20;
+
+//select * from ttable where ...nums
+//SELECT * FROM
+
+//Documents/
+//    homeworks/
+//        a.txt
+//        A.txt
+
+// CamelCase
+// UpperCamelCase lowerCamelCase
+
+// snake_case
+// ALL_CAPS_UNDERSCORE
+
+class Animal {
+    var legCount = 0
+    func desc() -> String {
+        return "Animal with \(legCount) legs"
+    }
+}
+
+let a1 = Animal()
+let d1 = a1.desc()
+let l1 = a1.legCount
+
+let m1 = Animal()
+m1.legCount = 10
+let desc = m1.desc()
+let d2 = a1.desc()
+m1.legCount
+a1.legCount
+
+
+
