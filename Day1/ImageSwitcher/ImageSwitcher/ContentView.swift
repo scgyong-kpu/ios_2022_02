@@ -7,38 +7,29 @@
 
 import SwiftUI
 
-struct TopButtonMod : ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .frame(width: 60, height: 60, alignment: .center)
-            .padding(8)
-    }
-}
 struct ContentView: View {
     @State var page = 1
     let total = 6
     var body: some View {
         VStack {
             HStack {
-                Button {
+                TopButton(image: "arrow.left.circle") {
                     page -= 1
-                } label: {
-                    Image(systemName: "arrow.left.circle")
-                        .resizable()
-                        .modifier(TopButtonMod())
-                }.disabled(page <= 1)
+                } enablesIf: {
+                    page > 1
+                }
+
                 Spacer()
                 Text("\(page)/\(total)")
 //                    .frame(maxWidth:.infinity)
                     .font(.largeTitle)
                 Spacer()
-                Button {
+
+                TopButton(image: "arrow.right.circle") {
                     page += 1
-                } label: {
-                    Image(systemName: "arrow.right.circle")
-                        .resizable()
-                        .modifier(TopButtonMod())
-                }.disabled(page >= total)
+                } enablesIf: {
+                    page < total
+                }
 
             }
             Image("cat\(page)")
