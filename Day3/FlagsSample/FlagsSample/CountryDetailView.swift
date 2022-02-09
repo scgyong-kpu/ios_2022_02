@@ -23,6 +23,7 @@ struct CountryDetailView: View {
                 }
             }
         }
+        .navigationBarTitle(Text(country.name))
     }
 }
 

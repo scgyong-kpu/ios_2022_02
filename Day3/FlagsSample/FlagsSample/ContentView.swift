@@ -19,7 +19,6 @@ struct ContentView: View {
                         ForEach (continent.countries, id: \.name) { country in
                             NavigationLink(destination: {
                                 CountryDetailView(country: country)
-                                    .navigationBarTitle(Text(country.name))
                             }) {
                                 CountryView(country: country)
                             }
