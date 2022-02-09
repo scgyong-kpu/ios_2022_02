@@ -8,13 +8,26 @@
 import SwiftUI
 
 struct CountryDetailView: View {
+    let country: (name: String, file: String)
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            List {
+                Image(country.file)
+                    .resizable()
+                    .frame(width: 200, height: 200, alignment: .center)
+                Text("\(country.name.count * 1433283)")
+                    .foregroundColor(.brown)
+                    .font(.headline)
+                ForEach(1...10, id:\.self) { num in
+                    Text("Something \(num)")
+                }
+            }
+        }
     }
 }
 
 struct CountryDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CountryDetailView()
+        CountryDetailView(country: (name:"대한민국 ", file:"south_korea"))
     }
 }

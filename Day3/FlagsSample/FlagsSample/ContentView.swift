@@ -18,7 +18,8 @@ struct ContentView: View {
                     Section(header: Text(continent.region)) {
                         ForEach (continent.countries, id: \.name) { country in
                             NavigationLink(destination: {
-                                Text(country.name)
+                                CountryDetailView(country: country)
+                                    .navigationBarTitle(Text(country.name))
                             }) {
                                 CountryView(country: country)
                             }
@@ -29,9 +30,9 @@ struct ContentView: View {
             .navigationBarTitle(Text("All Counties"))
         }
         .onAppear {
-            let color = UIColor.blue.lighter()
-            UINavigationBar.appearance().barTintColor = color
-            UINavigationBar.appearance().backgroundColor = color
+//            let color = UIColor.blue.lighter()
+//            UINavigationBar.appearance().barTintColor = color
+//            UINavigationBar.appearance().backgroundColor = color
         }
     }
 }
