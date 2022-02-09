@@ -15,11 +15,14 @@ struct CountryView: View {
             Image(image)
                 .resizable()
                 .frame(width: 60, height: 60, alignment: .center)
-            Text(title)
-                .frame(alignment:.leading)
+            VStack(alignment:.leading) {
+                Text(title)
+                Text("\(title.count * 1433283)")
+                    .foregroundColor(.brown)
+            }
         }
-        .frame(height:64)
-        .frame(maxWidth:.infinity)
+//        .frame(height:64)
+//        .frame(maxWidth:.infinity)
     }
 }
 

@@ -7,16 +7,27 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
-    let continent = Nations.self.contintents[0]
-//    let continents = Nations.self.contintents
+//    let continent = Nations.self.contintents[0]
+    let continents = Nations.self.contintents
     var body: some View {
-        List {
-            Section(header: Text(continent.region)) {
-                ForEach (continent.countries, id: \.name) { country in
-                    CountryView(title: country.name, image: country.file)
+        NavigationView {
+            List {
+                ForEach(continents, id: \.region) { continent in
+                    Section(header: Text(continent.region)) {
+                        ForEach (continent.countries, id: \.name) { country in
+                            CountryView(title: country.name, image: country.file)
+                        }
+                    }
                 }
             }
+            .navigationBarTitle(Text("All Counties"))
+        }
+        .onAppear {
+            let color = UIColor.blue.lighter()
+            UINavigationBar.appearance().barTintColor = color
+            UINavigationBar.appearance().backgroundColor = color
         }
     }
 }
