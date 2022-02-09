@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct CountryView: View {
-    let title: String
-    let image: String
+    let country: (name: String, file: String)
     var body: some View {
         HStack() {
-            Image(image)
+            Image(country.file)
                 .resizable()
                 .frame(width: 60, height: 60, alignment: .center)
             VStack(alignment:.leading) {
-                Text(title)
-                Text("\(title.count * 1433283)")
+                Text(country.name)
+                Text("\(country.name.count * 1433283)")
                     .foregroundColor(.brown)
             }
         }
@@ -28,6 +27,6 @@ struct CountryView: View {
 
 struct CountryView_Previews: PreviewProvider {
     static var previews: some View {
-        CountryView(title: "대한민국", image: "south_korea")
+        CountryView(country: (name:"대한민국 ", file:"south_korea"))
     }
 }

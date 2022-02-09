@@ -14,6 +14,7 @@
 		3D9C3F3827B35BD6008DF988 /* Nations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C3F3727B35BD6008DF988 /* Nations.swift */; };
 		3D9C3F3A27B35E90008DF988 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C3F3927B35E90008DF988 /* CountryView.swift */; };
 		3D9C3F3C27B3851A008DF988 /* UIColor+adjust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C3F3B27B3851A008DF988 /* UIColor+adjust.swift */; };
+		3D9C3F3E27B38734008DF988 /* CountryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C3F3D27B38734008DF988 /* CountryDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		3D9C3F3727B35BD6008DF988 /* Nations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nations.swift; sourceTree = "<group>"; };
 		3D9C3F3927B35E90008DF988 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		3D9C3F3B27B3851A008DF988 /* UIColor+adjust.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+adjust.swift"; sourceTree = "<group>"; };
+		3D9C3F3D27B38734008DF988 /* CountryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				3D9C3F2F27B35B84008DF988 /* Preview Content */,
 				3D9C3F3927B35E90008DF988 /* CountryView.swift */,
 				3D9C3F3B27B3851A008DF988 /* UIColor+adjust.swift */,
+				3D9C3F3D27B38734008DF988 /* CountryDetailView.swift */,
 			);
 			path = FlagsSample;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D9C3F3E27B38734008DF988 /* CountryDetailView.swift in Sources */,
 				3D9C3F3C27B3851A008DF988 /* UIColor+adjust.swift in Sources */,
 				3D9C3F2C27B35B82008DF988 /* ContentView.swift in Sources */,
 				3D9C3F2A27B35B82008DF988 /* FlagsSampleApp.swift in Sources */,

@@ -17,7 +17,11 @@ struct ContentView: View {
                 ForEach(continents, id: \.region) { continent in
                     Section(header: Text(continent.region)) {
                         ForEach (continent.countries, id: \.name) { country in
-                            CountryView(title: country.name, image: country.file)
+                            NavigationLink(destination: {
+                                Text(country.name)
+                            }) {
+                                CountryView(country: country)
+                            }
                         }
                     }
                 }
