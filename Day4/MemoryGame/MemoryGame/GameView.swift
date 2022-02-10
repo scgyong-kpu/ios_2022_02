@@ -9,10 +9,8 @@ import SwiftUI
 
 struct GameView: View {
     var body: some View {
-        VStack {
-            ForEach (0 ..< 4, id:\.self) { row in
-                CardView(prefix: "f", number: 1, open: true)
-            }
+        GridStack(rows: 4, columns: 3) { row, col in
+            CardView(prefix: "f", number: (row+1), open: true)
         }
     }
 }
