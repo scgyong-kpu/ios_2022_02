@@ -10,7 +10,7 @@ import SwiftUI
 struct GameView: View {
     @ObservedObject var game = GameModel()
     @Environment(\.presentationMode) var present
-    @State var showRestartAlert = false
+    @State var showsRestartAlert = false
     
     var body: some View {
         VStack {
@@ -27,7 +27,7 @@ struct GameView: View {
                         let card = game.card(row: row, col: col)
                         print("toggle \(row) \(col) \(card.state)")
                         if game.over {
-                            showRestartAlert = true
+                            showsRestartAlert = true
                         }
                     })
             }
@@ -48,7 +48,7 @@ struct GameView: View {
                 }
                 Spacer()
                 Button {
-                    showRestartAlert = true
+                    showsRestartAlert = true
                 } label: {
                     Text("Restart")
                         .padding(.horizontal)
@@ -72,7 +72,7 @@ struct GameView: View {
                            endPoint: .bottomTrailing
             )
         )
-        .alert(isPresented: $showRestartAlert) {
+        .alert(isPresented: $showsRestartAlert) {
             Alert(
                 title: Text("Restart?"),
                 message: Text("Do you want to restart the game?"),
