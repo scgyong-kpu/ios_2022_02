@@ -16,6 +16,7 @@ struct GameView: View {
                 Spacer()
                 Text("Flips: \(game.flips)")
             }
+            .padding(.horizontal)
             GridStack(rows: GameModel.rows, columns: GameModel.cols) { row, col in
                 CardView(prefix: "f", card: game.card(row: row, col: col))
                     .gesture(TapGesture().onEnded {
