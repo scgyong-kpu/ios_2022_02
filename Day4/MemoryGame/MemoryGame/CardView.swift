@@ -15,7 +15,10 @@ struct CardView: View {
     var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     var body: some View {
         if card.state == .removed {
-            Text("Removed")
+            Image(systemName: "x.circle")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .opacity(0.1)
         } else {
             Image(imageName)
                 .onReceive(timer) { _ in
