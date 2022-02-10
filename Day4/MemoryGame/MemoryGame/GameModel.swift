@@ -17,7 +17,7 @@ struct Card {
 }
 
 class GameModel: ObservableObject {
-    static let rows = 6
+    static let rows = 5
     static let cols = 4
     @Published var cards = [Card]()
     @Published var flips = 0
@@ -34,6 +34,7 @@ class GameModel: ObservableObject {
             cards.append(Card(state: .closed, number: i))
             cards.append(Card(state: .closed, number: i))
         }
+        cards.shuffle()
         flips = 0
         openCardIndex = nil
     }
