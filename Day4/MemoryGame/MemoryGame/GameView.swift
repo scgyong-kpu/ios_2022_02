@@ -27,6 +27,16 @@ struct GameView: View {
             }
             .aspectRatio(CGSize(width: GameModel.cols, height: GameModel.rows), contentMode: .fit)
         }
+        .background(
+            LinearGradient(gradient:
+                            Gradient(colors: [
+                                .white,
+                                .blue.opacity(0.5)
+                            ]),
+                           startPoint: .topLeading,
+                           endPoint: .bottomTrailing
+            )
+        )
     }
 }
 
