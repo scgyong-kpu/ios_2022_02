@@ -14,11 +14,14 @@ struct CardView: View {
     @State var frameIndex = 1
     var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     var body: some View {
-        Image(imageName)
-            .onReceive(timer) { _ in
-                frameIndex = frameIndex < count ? frameIndex + 1 : 1
-//                print(frameIndex)
-            }
+        if card.state == .removed {
+            Text("Removed")
+        } else {
+            Image(imageName)
+                .onReceive(timer) { _ in
+                    frameIndex = frameIndex < count ? frameIndex + 1 : 1
+                }
+        }
     }
     var imageName: String {
         if card.state == .closed { return prefix + "_back" }
@@ -33,10 +36,12 @@ struct CardView_Previews: PreviewProvider {
             HStack {
                 CardView(prefix: "f", card: Card(state: .open, number: 1))
                 CardView(prefix: "f", card: Card(state: .closed, number: 1))
+                CardView(prefix: "f", card: Card(state: .removed, number: 1))
             }
             HStack {
                 CardView(prefix: "f", card: Card(state: .open, number: 2))
                 CardView(prefix: "f", card: Card(state: .closed, number: 2))
+                CardView(prefix: "f", card: Card(state: .removed, number: 2))
             }
         }
     }
