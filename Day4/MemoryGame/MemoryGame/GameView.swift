@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct GameView: View {
+    var game = GameModel()
     var body: some View {
-        GridStack(rows: 4, columns: 3) { row, col in
-            CardView(prefix: "f", number: (row+1), open: true)
+        GridStack(rows: GameModel.rows, columns: GameModel.cols) { row, col in
+            CardView(prefix: "f", card: game.card(row: row, col: col))
         }
     }
 }
