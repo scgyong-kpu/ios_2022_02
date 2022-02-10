@@ -11,12 +11,19 @@ struct CardView: View {
     let prefix: String
     let number: Int
     let open: Bool
+    let count = 8
+    @State var frameIndex = 1
+    var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     var body: some View {
         Image(imageName)
+            .onReceive(timer) { _ in
+                frameIndex = frameIndex < count ? frameIndex + 1 : 1
+                print(frameIndex)
+            }
     }
     var imageName: String {
         if !open { return prefix + "_back" }
-        let name = prefix + String(format: "_%02d_01", number)
+        let name = prefix + String(format: "_%02d_%02d", number, frameIndex)
         return name
     }
 }
