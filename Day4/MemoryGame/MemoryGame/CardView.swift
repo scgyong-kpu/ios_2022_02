@@ -8,13 +8,30 @@
 import SwiftUI
 
 struct CardView: View {
+    let prefix: String
+    let number: Int
+    let open: Bool
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Image(imageName)
+    }
+    var imageName: String {
+        if !open { return prefix + "_back" }
+        let name = prefix + String(format: "_%02d_01", number)
+        return name
     }
 }
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView()
+        VStack {
+            HStack {
+                CardView(prefix: "f", number: 1, open: true)
+                CardView(prefix: "f", number: 1, open: false)
+            }
+            HStack {
+                CardView(prefix: "f", number: 2, open: true)
+                CardView(prefix: "f", number: 2, open: false)
+            }
+        }
     }
 }
