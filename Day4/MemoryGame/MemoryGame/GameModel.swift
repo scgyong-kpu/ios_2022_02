@@ -22,17 +22,28 @@ class GameModel: ObservableObject {
     @Published var cards = [Card]()
     @Published var flips = 0
     var openCardIndex: Int?
+    var count = 0
 
     init() {
         start()
     }
     
+    var over: Bool { count == 0 }
+//        for card in cards {
+//            if card.state != .removed {
+//                return false
+//            }
+//        }
+//        return true
+//    }
     func start() {
         cards = []
+        count = 0
         let max = GameModel.rows * GameModel.cols / 2
         for i in 1...max {
             cards.append(Card(state: .closed, number: i))
             cards.append(Card(state: .closed, number: i))
+            count += 2
         }
         cards.shuffle()
         flips = 0
@@ -53,6 +64,7 @@ class GameModel: ObservableObject {
                 cards[index].state = .removed
                 cards[oci].state = .removed
                 openCardIndex = nil
+                count -= 2
                 return
             } else {
                 cards[oci].state = .closed
