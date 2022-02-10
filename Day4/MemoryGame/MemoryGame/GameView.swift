@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GameView: View {
+    let prefix: String
     @ObservedObject var game = GameModel()
     @Environment(\.presentationMode) var present
     @State var showsRestartAlert = false
@@ -21,7 +22,7 @@ struct GameView: View {
             }
             .padding(.horizontal)
             GridStack(rows: GameModel.rows, columns: GameModel.cols) { row, col in
-                CardView(prefix: "f", card: game.card(row: row, col: col))
+                CardView(prefix: prefix, card: game.card(row: row, col: col))
                     .gesture(TapGesture().onEnded {
                         game.toggle(row: row, col: col)
                         let card = game.card(row: row, col: col)
@@ -88,6 +89,6 @@ struct GameView: View {
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView()
+        GameView(prefix: "f")
     }
 }
