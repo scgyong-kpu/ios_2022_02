@@ -17,7 +17,7 @@ struct CardView: View {
         Image(imageName)
             .onReceive(timer) { _ in
                 frameIndex = frameIndex < count ? frameIndex + 1 : 1
-                print(frameIndex)
+//                print(frameIndex)
             }
     }
     var imageName: String {
