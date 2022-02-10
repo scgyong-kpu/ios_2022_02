@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MenuView: View {
-    let resourcePrefixes = [ "f", "t" ]
+    let resourcePrefixes = [ "z", "f", "t" ]
     var body: some View {
         NavigationView {
             VStack {
@@ -52,7 +52,7 @@ struct MenuItemView: View {
             }
             Spacer()
         }
-        .frame(height: 300)
+        .frame(height: 240)
         .background(
             ZStack {
                 Color.white//.opacity(0.2)
@@ -63,7 +63,7 @@ struct MenuItemView: View {
                     .padding(50)
                     //.opacity(0.25)
             }
-            .rotation3DEffect(.degrees(30), axis: (x: 0.0, y: -1.0, z: 0.0))
+            .rotation3DEffect(.degrees(20), axis: (x: 0.0, y: -1.0, z: 0.0))
             .opacity(0.3)
         )
     }
