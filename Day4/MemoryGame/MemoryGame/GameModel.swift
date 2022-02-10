@@ -17,11 +17,12 @@ struct Card {
 }
 
 class GameModel: ObservableObject {
-    static let rows = 6
+    static let rows = 4
     static let cols = 3
     @Published var cards = [Card]()
+    @Published var flips = 0
     var openCardIndex: Int?
-    
+
     init() {
         start()
     }
@@ -32,7 +33,9 @@ class GameModel: ObservableObject {
         for i in 1...max {
             cards.append(Card(state: .closed, number: i))
             cards.append(Card(state: .closed, number: i))
-       }
+        }
+        flips = 0
+        openCardIndex = nil
     }
     
     func card(row: Int, col: Int) -> Card {
@@ -58,6 +61,7 @@ class GameModel: ObservableObject {
         case .closed:
             cards[index].state = .open
             openCardIndex = index
+            flips += 1
         case .open:
             cards[index].state = .closed
         case .removed:
