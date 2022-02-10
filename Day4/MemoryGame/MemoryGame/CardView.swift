@@ -21,6 +21,8 @@ struct CardView: View {
                 .opacity(0.1)
         } else {
             Image(imageName)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
                 .onReceive(timer) { _ in
                     frameIndex = frameIndex < count ? frameIndex + 1 : 1
                 }
