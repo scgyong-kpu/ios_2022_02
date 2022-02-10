@@ -8,30 +8,67 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var spinning = false
+    @State var scale = CGFloat(1.0)
+    @State var visible = false
     var body: some View {
         VStack {
-            Path { path in
-                path.move(to: CGPoint(x: 10, y: 0))
-                path.addLine(to: CGPoint(x: 10, y: 35))
-                path.addLine(to: CGPoint(x: 30, y: 30))
-                path.closeSubpath()
+            Spacer()
+            ZStack {
+                Circle()
+                    .stroke(lineWidth: 2)
+                    .foregroundColor(.blue)
+                    .frame(width: 100, height: 100, alignment: .center)
+                Image(systemName: "forward.fill")
+                    .font(.largeTitle)
+                    .offset(y: -50)
+                    .rotationEffect(.degrees(spinning ? 360 : 0))
+                    .animation(
+                        .linear(duration: 2)
+                            .repeatForever(autoreverses: false),
+                        value: spinning ? 360 : 0
+                    )
             }
-            .fill(Color.green)
-            .frame(width: 200, height: 100)
-            Circle()
-                .fill(
-                    RadialGradient(gradient: Gradient(colors:[
-                        Color.red, Color.yellow, Color.green, Color.blue, Color.purple
-                    ]), center: .center, startRadius: 0, endRadius: 300)
-                )
-            .foregroundColor(Color.red)
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(lineWidth:8)
-                .frame(width:240, height:120)
-            Capsule()
-                .stroke(lineWidth: 5)
-                .foregroundColor(Color.blue)
-                .frame(width: 200, height: 60)
+            .scaleEffect(scale)
+            .animation(.spring(response: 1, dampingFraction: 0.2, blendDuration: 0), value: scale)
+            .onAppear {
+                spinning = true
+            }
+            Spacer()
+            Toggle(isOn: $visible.animation(.linear)) {
+                Text("Toggle Text Views")
+                    .font(.title)
+            }
+            .padding()
+            Button {
+                if scale < 2.8 {
+                    scale += 0.3
+                } else {
+                    scale = 1
+                }
+//                self.angle += .degrees(10)
+            } label: {
+                Text("Hit Me!")
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+                    .padding()
+                    .border(Color.black, width: 2)
+            }
+            if (visible) {
+                Text("Slide").font(.largeTitle)
+                    .transition(.slide)
+            } else {
+                Text("Scale").font(.largeTitle)
+                    .transition(.scale)
+            }
+            if (visible) {
+                Text("Move-Top").font(.largeTitle)
+                    .transition(.move(edge: .top))
+            } else {
+                Text("Move-Leading").font(.largeTitle)
+                    .transition(.move(edge: .leading))
+            }
+            Spacer()
         }
     }
 }
