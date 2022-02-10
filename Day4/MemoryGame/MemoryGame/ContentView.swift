@@ -9,7 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        GameView()
+        NavigationView {
+            NavigationLink(destination: GameView()) {
+                Text("Start Game")
+            }
+            .navigationBarTitle(Text("Memory Game"))
+        }
     }
 }
 
