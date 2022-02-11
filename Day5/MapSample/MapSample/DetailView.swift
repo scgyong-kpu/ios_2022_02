@@ -8,12 +8,30 @@
 import SwiftUI
 import MapKit
 
+struct MyItem: Identifiable {
+    let id = UUID()
+    let poiItem: PoiItem
+}
 struct DetailView: View {
     let poiItem: PoiItem
     @State var region: MKCoordinateRegion
+    let items: [MyItem]
     init(poiItem: PoiItem) {
         self.poiItem = poiItem
-        region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: poiItem.REFINE_WGS84_LAT, longitude: poiItem.REFINE_WGS84_LOGT), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+        region = MKCoordinateRegion(
+            center: CLLocationCoordinate2D(
+                latitude: poiItem.REFINE_WGS84_LAT,
+                longitude: poiItem.REFINE_WGS84_LOGT),
+            span: MKCoordinateSpan(
+                latitudeDelta: 0.05,
+                longitudeDelta: 0.05)
+        )
+        items = [
+//            MyItem(poiItem: poiItem),
+            MyItem(poiItem: PoiData.rows[0]),
+            MyItem(poiItem: PoiData.rows[1]),
+            MyItem(poiItem: PoiData.rows[2]),
+        ]
     }
     var body: some View {
         GeometryReader { gr in
@@ -51,9 +69,18 @@ struct DetailView: View {
                             }
                         }
                     }
+                    .background(Color.purple.opacity(0.3))
                     .padding()
 
-                   Map(coordinateRegion: $region)
+                   Map(coordinateRegion: $region,
+                       annotationItems: items
+                   ) { item in
+                       MapMarker(
+                        coordinate: CLLocationCoordinate2D(
+                            latitude: item.poiItem.REFINE_WGS84_LAT,
+                            longitude: item.poiItem.REFINE_WGS84_LOGT),
+                        tint: .red)
+                   }
                         .frame(
                             width: gr.size.width,
                             height: gr.size.height / 2

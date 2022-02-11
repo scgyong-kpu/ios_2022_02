@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 struct PoiItem {
     let SIGUN_NM: String
     let SIGUN_CD: String
