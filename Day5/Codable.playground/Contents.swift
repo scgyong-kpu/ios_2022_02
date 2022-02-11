@@ -65,12 +65,51 @@ let jsonData = """
 
 """.data(using: .utf8)!
 
-let result = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String:Any?]
-let r2 = result!["PlaceThatDoATasteyFoodSt"] as! [Any]
-let r3 = r2[1] as! [String:Any]
-let r4 = r3["row"] as! [Any]
-let r5 = r4[0]
+func parse(data: Data) -> [PoiItem]? {
+    guard let root = try? JSONSerialization.jsonObject(with: data) as? [String:Any] else {
+        return nil
+    }
+    guard let arr = root["PlaceThatDoATasteyFoodSt"] as? [Any] else {
+        return nil
+    }
+    guard let rowobj = arr[1] as? [String:[Any]] else {
+        return nil
+    }
+    guard let items = rowobj["row"] else {
+        return nil
+    }
+    var pois = [PoiItem]()
+    for item in items {
+        guard let poi = PoiItem.from(dictionary: item) else {
+            continue
+        }
+        pois.append(poi)
+    }
+    return pois
+}
 
-let decoder = JSONDecoder()
+extension PoiItem {
+    static func from(dictionary: Any) -> PoiItem? {
+        guard let data = try? JSONSerialization.data(withJSONObject: dictionary) else {
+            return nil
+        }
+        let decoder = JSONDecoder()
+        guard let item = try? decoder.decode(PoiItem.self, from: data) else {
+            return nil
+        }
+        return item
+    }
+}
+
+let items = parse(data: jsonData)
+//let result = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String:Any]
+
+
+//let r2 = result!["PlaceThatDoATasteyFoodSt"] as! [Any]
+//let r3 = r2[1] as! [String:Any]
+//let r4 = r3["row"] as! [Any]
+//let r5 = r4[0]
+
+//let decoder = JSONDecoder()
 //decoder.decode(, from: [String:Any])
 
