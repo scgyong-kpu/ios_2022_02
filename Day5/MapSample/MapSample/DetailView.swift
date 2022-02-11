@@ -19,9 +19,7 @@ struct DetailView: View {
     init(poiItem: PoiItem) {
         self.poiItem = poiItem
         region = MKCoordinateRegion(
-            center: CLLocationCoordinate2D(
-                latitude: Double(poiItem.REFINE_WGS84_LAT)!,
-                longitude: Double(poiItem.REFINE_WGS84_LOGT)!),
+            center: poiItem.location,
             span: MKCoordinateSpan(
                 latitudeDelta: 0.05,
                 longitudeDelta: 0.05)
@@ -73,20 +71,28 @@ struct DetailView: View {
                        annotationItems: items
                    ) { item in
                        MapMarker(
-                        coordinate: CLLocationCoordinate2D(
-                            latitude: Double(item.poiItem.REFINE_WGS84_LAT)!,
-                            longitude: Double(item.poiItem.REFINE_WGS84_LOGT)!),
-                        tint: .red)
+                        coordinate: item.poiItem.location,
+                        tint: .red
+                       )
                    }
-                        .frame(
-                            width: gr.size.width,
-                            height: gr.size.height / 2
-                        )
+                    .frame(
+                        width: gr.size.width,
+                        height: gr.size.height / 2
+                    )
                 }
                 .navigationTitle(poiItem.RESTRT_NM)
-            .navigationBarTitleDisplayMode(.inline)
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
+    }
+}
+
+extension PoiItem {
+    var location: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(
+            latitude: Double(REFINE_WGS84_LAT)!,
+            longitude: Double(REFINE_WGS84_LOGT)!
+        )
     }
 }
 
