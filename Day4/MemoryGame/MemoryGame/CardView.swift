@@ -10,7 +10,16 @@ import SwiftUI
 struct CardView: View {
     let prefix: String
     let card: Card
-    let count = 8
+    let count: Int
+    init(prefix: String, card: Card) {
+        self.prefix = prefix
+        self.card = card
+        if prefix == "z" {
+            count = card.number == 10 ? 4 : 18
+        } else {
+            count = 8
+        }
+    }
     @State var frameIndex = 1
     var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     var body: some View {
