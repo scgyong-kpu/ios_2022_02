@@ -13,17 +13,26 @@ struct DetailView: View {
     @State var region: MKCoordinateRegion
     init(poiItem: PoiItem) {
         self.poiItem = poiItem
-        region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: poiItem.REFINE_WGS84_LAT, longitude: poiItem.REFINE_WGS84_LOGT), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: poiItem.REFINE_WGS84_LAT, longitude: poiItem.REFINE_WGS84_LOGT), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
     }
     var body: some View {
         VStack {
             Text(poiItem.SIGUN_NM)
             Text(poiItem.SIGUN_CD)
             Text(poiItem.REPRSNT_FOOD_NM)
-            Map(coordinateRegion: $region)
+            Button {
+                let strUrl = "tel://" + poiItem.TASTFDPLC_TELNO
+                guard let url = URL(string: strUrl) else { return }
+                UIApplication.shared.open(url)
+            } label: {
+                Text(poiItem.TASTFDPLC_TELNO)
+            }
+
+           Map(coordinateRegion: $region)
                 .frame(maxWidth:.infinity, maxHeight:.infinity)
         }
         .navigationTitle(poiItem.RESTRT_NM)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
