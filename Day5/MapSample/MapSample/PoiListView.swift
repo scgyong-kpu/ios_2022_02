@@ -11,12 +11,28 @@ struct PoiListView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(PoiData.rows, id: \.REPRSNT_FOOD_NM) { row in
-                    NavigationLink(destination: Text(row.REPRSNT_FOOD_NM)) {
-                        Text(row.REPRSNT_FOOD_NM)
+                ForEach(PoiData.rows, id: \.REPRSNT_FOOD_NM) { (poi: PoiItem) in
+                    NavigationLink(destination: DetailView(poiItem: poi)) {
+                        HStack {
+                            Image(systemName: "fork.knife.circle")
+                                .resizable()
+                                .frame(width: 60, height: 60)
+                            VStack(alignment: .leading) {
+                                Text(poi.RESTRT_NM)
+                                    .font(.title)
+                                Text(poi.REPRSNT_FOOD_NM)
+                                    .font(.headline)
+                                    .foregroundColor(.brown)
+                                Text(poi.REFINE_ROADNM_ADDR)
+                                    .lineLimit(1)
+                                    .font(.footnote)
+                                    .foregroundColor(.gray)
+                            }
+                        }
                     }
                 }
             }
+            .navigationBarTitle(Text("Restaurants"))
         }
     }
 }
