@@ -27,10 +27,7 @@ struct DetailView: View {
                 longitudeDelta: 0.05)
         )
         items = [
-//            MyItem(poiItem: poiItem),
-            MyItem(poiItem: PoiData.rows[0]),
-            MyItem(poiItem: PoiData.rows[1]),
-            MyItem(poiItem: PoiData.rows[2]),
+            MyItem(poiItem: poiItem),
         ]
     }
     var body: some View {
@@ -96,7 +93,8 @@ struct DetailView: View {
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DetailView(poiItem: PoiData.rows[0])
+            Text("Cannot test now")
+//            DetailView(poiItem: PoiData.rows[0])
         }
     }
 }

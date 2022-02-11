@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct PoiListView: View {
+    let poiData = PoiData()
     var body: some View {
         NavigationView {
             List {
-                ForEach(PoiData.rows, id: \.REPRSNT_FOOD_NM) { (poi: PoiItem) in
+                ForEach(poiData.rows, id: \.REPRSNT_FOOD_NM) { (poi: PoiItem) in
                     NavigationLink(destination: DetailView(poiItem: poi)) {
                         HStack {
                             Image(systemName: "fork.knife.circle")
@@ -33,6 +34,9 @@ struct PoiListView: View {
                 }
             }
             .navigationBarTitle(Text("Restaurants"))
+        }
+        .onAppear {
+            poiData.startLoading()
         }
     }
 }
