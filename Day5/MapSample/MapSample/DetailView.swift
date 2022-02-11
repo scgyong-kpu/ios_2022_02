@@ -20,8 +20,8 @@ struct DetailView: View {
         self.poiItem = poiItem
         region = MKCoordinateRegion(
             center: CLLocationCoordinate2D(
-                latitude: poiItem.REFINE_WGS84_LAT,
-                longitude: poiItem.REFINE_WGS84_LOGT),
+                latitude: Double(poiItem.REFINE_WGS84_LAT)!,
+                longitude: Double(poiItem.REFINE_WGS84_LOGT)!),
             span: MKCoordinateSpan(
                 latitudeDelta: 0.05,
                 longitudeDelta: 0.05)
@@ -74,8 +74,8 @@ struct DetailView: View {
                    ) { item in
                        MapMarker(
                         coordinate: CLLocationCoordinate2D(
-                            latitude: item.poiItem.REFINE_WGS84_LAT,
-                            longitude: item.poiItem.REFINE_WGS84_LOGT),
+                            latitude: Double(item.poiItem.REFINE_WGS84_LAT)!,
+                            longitude: Double(item.poiItem.REFINE_WGS84_LOGT)!),
                         tint: .red)
                    }
                         .frame(

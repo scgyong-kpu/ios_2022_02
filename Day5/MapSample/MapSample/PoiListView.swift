@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PoiListView: View {
-    let poiData = PoiData()
+    @ObservedObject var poiData = PoiData()
     var body: some View {
         NavigationView {
             List {
