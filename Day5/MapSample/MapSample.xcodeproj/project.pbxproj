@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D3F21B627B5FE4D00492D23 /* PoiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3F21B527B5FE4D00492D23 /* PoiData.swift */; };
+		3D3F21B827B5FFD400492D23 /* PoiListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3F21B727B5FFD400492D23 /* PoiListView.swift */; };
 		3D827C5A27B5F7A700F5C275 /* MapSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D827C5927B5F7A700F5C275 /* MapSampleApp.swift */; };
 		3D827C5C27B5F7A700F5C275 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D827C5B27B5F7A700F5C275 /* ContentView.swift */; };
 		3D827C5E27B5F7A900F5C275 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D827C5D27B5F7A900F5C275 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		3D3F21B527B5FE4D00492D23 /* PoiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoiData.swift; sourceTree = "<group>"; };
+		3D3F21B727B5FFD400492D23 /* PoiListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoiListView.swift; sourceTree = "<group>"; };
 		3D827C5627B5F7A700F5C275 /* MapSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D827C5927B5F7A700F5C275 /* MapSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSampleApp.swift; sourceTree = "<group>"; };
 		3D827C5B27B5F7A700F5C275 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				3D827C5D27B5F7A900F5C275 /* Assets.xcassets */,
 				3D827C5F27B5F7A900F5C275 /* Preview Content */,
 				3D3F21B527B5FE4D00492D23 /* PoiData.swift */,
+				3D3F21B727B5FFD400492D23 /* PoiListView.swift */,
 			);
 			path = MapSample;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				3D3F21B627B5FE4D00492D23 /* PoiData.swift in Sources */,
 				3D827C5C27B5F7A700F5C275 /* ContentView.swift in Sources */,
 				3D827C5A27B5F7A700F5C275 /* MapSampleApp.swift in Sources */,
+				3D3F21B827B5FFD400492D23 /* PoiListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
